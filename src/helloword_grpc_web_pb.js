@@ -1,0 +1,384 @@
+/**
+ * @fileoverview gRPC-Web generated client stub for helloworld
+ * @enhanceable
+ * @public
+ */
+
+// GENERATED CODE -- DO NOT EDIT!
+
+
+/* eslint-disable */
+// @ts-nocheck
+
+
+
+const grpc = {};
+grpc.web = require('grpc-web');
+
+const proto = {};
+proto.helloworld = require('./helloword_pb.js');
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.helloworld.GreeterClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.helloworld.GreeterPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.helloworld.HelloRequest,
+ *   !proto.helloworld.HelloReply>}
+ */
+const methodDescriptor_Greeter_SayHello = new grpc.web.MethodDescriptor(
+  '/helloworld.Greeter/SayHello',
+  grpc.web.MethodType.UNARY,
+  proto.helloworld.HelloRequest,
+  proto.helloworld.HelloReply,
+  /**
+   * @param {!proto.helloworld.HelloRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.helloworld.HelloReply.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.helloworld.HelloRequest,
+ *   !proto.helloworld.HelloReply>}
+ */
+const methodInfo_Greeter_SayHello = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.helloworld.HelloReply,
+  /**
+   * @param {!proto.helloworld.HelloRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.helloworld.HelloReply.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.helloworld.HelloRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.helloworld.HelloReply)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.helloworld.HelloReply>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.helloworld.GreeterClient.prototype.sayHello =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/helloworld.Greeter/SayHello',
+      request,
+      metadata || {},
+      methodDescriptor_Greeter_SayHello,
+      callback);
+};
+
+
+/**
+ * @param {!proto.helloworld.HelloRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.helloworld.HelloReply>}
+ *     Promise that resolves to the response
+ */
+proto.helloworld.GreeterPromiseClient.prototype.sayHello =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/helloworld.Greeter/SayHello',
+      request,
+      metadata || {},
+      methodDescriptor_Greeter_SayHello);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.helloworld.RepeatHelloRequest,
+ *   !proto.helloworld.HelloReply>}
+ */
+const methodDescriptor_Greeter_SayRepeatHello = new grpc.web.MethodDescriptor(
+  '/helloworld.Greeter/SayRepeatHello',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.helloworld.RepeatHelloRequest,
+  proto.helloworld.HelloReply,
+  /**
+   * @param {!proto.helloworld.RepeatHelloRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.helloworld.HelloReply.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.helloworld.RepeatHelloRequest,
+ *   !proto.helloworld.HelloReply>}
+ */
+const methodInfo_Greeter_SayRepeatHello = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.helloworld.HelloReply,
+  /**
+   * @param {!proto.helloworld.RepeatHelloRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.helloworld.HelloReply.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.helloworld.RepeatHelloRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.helloworld.HelloReply>}
+ *     The XHR Node Readable Stream
+ */
+proto.helloworld.GreeterClient.prototype.sayRepeatHello =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/helloworld.Greeter/SayRepeatHello',
+      request,
+      metadata || {},
+      methodDescriptor_Greeter_SayRepeatHello);
+};
+
+
+/**
+ * @param {!proto.helloworld.RepeatHelloRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.helloworld.HelloReply>}
+ *     The XHR Node Readable Stream
+ */
+proto.helloworld.GreeterPromiseClient.prototype.sayRepeatHello =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/helloworld.Greeter/SayRepeatHello',
+      request,
+      metadata || {},
+      methodDescriptor_Greeter_SayRepeatHello);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.helloworld.PilotRequest,
+ *   !proto.helloworld.PilotReply>}
+ */
+const methodDescriptor_Greeter_getPilot = new grpc.web.MethodDescriptor(
+  '/helloworld.Greeter/getPilot',
+  grpc.web.MethodType.UNARY,
+  proto.helloworld.PilotRequest,
+  proto.helloworld.PilotReply,
+  /**
+   * @param {!proto.helloworld.PilotRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.helloworld.PilotReply.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.helloworld.PilotRequest,
+ *   !proto.helloworld.PilotReply>}
+ */
+const methodInfo_Greeter_getPilot = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.helloworld.PilotReply,
+  /**
+   * @param {!proto.helloworld.PilotRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.helloworld.PilotReply.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.helloworld.PilotRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.helloworld.PilotReply)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.helloworld.PilotReply>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.helloworld.GreeterClient.prototype.getPilot =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/helloworld.Greeter/getPilot',
+      request,
+      metadata || {},
+      methodDescriptor_Greeter_getPilot,
+      callback);
+};
+
+
+/**
+ * @param {!proto.helloworld.PilotRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.helloworld.PilotReply>}
+ *     Promise that resolves to the response
+ */
+proto.helloworld.GreeterPromiseClient.prototype.getPilot =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/helloworld.Greeter/getPilot',
+      request,
+      metadata || {},
+      methodDescriptor_Greeter_getPilot);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.helloworld.PlaneRequest,
+ *   !proto.helloworld.PlaneReply>}
+ */
+const methodDescriptor_Greeter_Planes = new grpc.web.MethodDescriptor(
+  '/helloworld.Greeter/Planes',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.helloworld.PlaneRequest,
+  proto.helloworld.PlaneReply,
+  /**
+   * @param {!proto.helloworld.PlaneRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.helloworld.PlaneReply.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.helloworld.PlaneRequest,
+ *   !proto.helloworld.PlaneReply>}
+ */
+const methodInfo_Greeter_Planes = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.helloworld.PlaneReply,
+  /**
+   * @param {!proto.helloworld.PlaneRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.helloworld.PlaneReply.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.helloworld.PlaneRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.helloworld.PlaneReply>}
+ *     The XHR Node Readable Stream
+ */
+proto.helloworld.GreeterClient.prototype.planes =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/helloworld.Greeter/Planes',
+      request,
+      metadata || {},
+      methodDescriptor_Greeter_Planes);
+};
+
+
+/**
+ * @param {!proto.helloworld.PlaneRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.helloworld.PlaneReply>}
+ *     The XHR Node Readable Stream
+ */
+proto.helloworld.GreeterPromiseClient.prototype.planes =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/helloworld.Greeter/Planes',
+      request,
+      metadata || {},
+      methodDescriptor_Greeter_Planes);
+};
+
+
+module.exports = proto.helloworld;
+
